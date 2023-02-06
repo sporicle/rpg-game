@@ -32,43 +32,43 @@ public class PokemonBase : ScriptableObject
         get { return description;}
     }
 
-    public string FrontSprite {
+    public Sprite FrontSprite {
         get { return frontSprite;}
     }
 
-    public string BackSprite {
+    public Sprite BackSprite {
         get { return backSprite;}
     }
 
-    public string Type1 {
+    public PokemonType Type1 {
         get { return type1;}
     }
 
-    public string Type2 {
+    public PokemonType Type2 {
         get { return type2;}
     }
 
-    public string MaxHP {
+    public int MaxHP {
         get { return maxHP;}
     }
 
-    public string Attack {
+    public int Attack {
         get { return attack;}
     }
 
-    public string Defense {
+    public int Defense {
         get { return defense;}
     }
 
-    public string SpAttack {
+    public int SpAttack {
         get { return spAttack;}
     }
 
-    public string SpDefense {
+    public int SpDefense {
         get { return spDefense;}
     }
 
-    public string Speed {
+    public int Speed {
         get { return speed;}
     }
 
