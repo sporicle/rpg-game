@@ -23,55 +23,74 @@ public class PokemonBase : ScriptableObject
     [SerializeField] int spAttack;
     [SerializeField] int spDefense;
     [SerializeField] int speed;
+    [SerializeField] int speed2;
 
-    public string Name {
-        get { return name;}
+    [SerializeField] List<LearnableMove> learnableMoves;
+
+    public string Name
+    {
+        get { return name; }
     }
 
-    public string Description {
-        get { return description;}
+    public string Description
+    {
+        get { return description; }
     }
 
-    public Sprite FrontSprite {
-        get { return frontSprite;}
+    public Sprite FrontSprite
+    {
+        get { return frontSprite; }
     }
 
-    public Sprite BackSprite {
-        get { return backSprite;}
+    public Sprite BackSprite
+    {
+        get { return backSprite; }
     }
 
-    public PokemonType Type1 {
-        get { return type1;}
+    public PokemonType Type1
+    {
+        get { return type1; }
     }
 
-    public PokemonType Type2 {
-        get { return type2;}
+    public PokemonType Type2
+    {
+        get { return type2; }
     }
 
-    public int MaxHP {
-        get { return maxHP;}
+    public int MaxHP
+    {
+        get { return maxHP; }
     }
 
-    public int Attack {
-        get { return attack;}
+    public int Attack
+    {
+        get { return attack; }
     }
 
-    public int Defense {
-        get { return defense;}
+    public int Defense
+    {
+        get { return defense; }
     }
 
-    public int SpAttack {
-        get { return spAttack;}
+    public int SpAttack
+    {
+        get { return spAttack; }
     }
 
-    public int SpDefense {
-        get { return spDefense;}
+    public int SpDefense
+    {
+        get { return spDefense; }
     }
 
-    public int Speed {
-        get { return speed;}
+    public int Speed
+    {
+        get { return speed; }
     }
 
+    public List<LearnableMove> LearnableMoves
+    {
+        get { return learnableMoves; }
+    }
 }
 
 public enum PokemonType
@@ -84,7 +103,7 @@ public enum PokemonType
     Grass,
     Ice,
     Fighting,
-    Poison, 
+    Poison,
     Ground,
     Flying,
     Psychic,
@@ -92,4 +111,20 @@ public enum PokemonType
     Rock,
     Ghost,
     Dragon
+}
+[System.Serializable]
+public class LearnableMove
+{
+    [SerializeField] MoveBase moveBase;
+    [SerializeField] int level;
+
+    public MoveBase Base
+    {
+        get => moveBase;
+    }
+
+    public int Level
+    {
+        get => level;
+    }
 }
