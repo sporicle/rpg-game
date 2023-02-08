@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2efe6d9bc5d918f458988deecc740bb8, type: 3}
   m_Name: Scratch
   m_EditorClassIdentifier: 
-  name: 
+  name: Scratch
   description: 
   type: 1
   power: 40
