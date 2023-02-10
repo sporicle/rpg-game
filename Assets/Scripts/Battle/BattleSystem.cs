@@ -57,13 +57,18 @@ public class BattleSystem : MonoBehaviour
         var move = playerUnit.Pokemon.Moves[currentMove];
         yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} used {move.Base.Name}");
 
+        playerUnit.PlayAttackAnimation();
+        yield return new WaitForSeconds(1f);
+
         var damageDetails = enemyUnit.Pokemon.TakeDamage(move, playerUnit.Pokemon);
+        HitAnimation(enemyUnit, damageDetails);
+
         yield return enemyHud.UpdateHP();
         yield return ShowDamageDetails(damageDetails);
         if (damageDetails.Fainted)
         {
+            enemyUnit.PlayFaintAnimation();
             yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.Name} Fainted");
-
         }
         else
         {
@@ -75,15 +80,19 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.EnemyMove;
         var move = enemyUnit.Pokemon.GetRandomMove();
-
         yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.Name} used {move.Base.Name}");
 
+        enemyUnit.PlayAttackAnimation();
+        yield return new WaitForSeconds(1f);
+
         var damageDetails = playerUnit.Pokemon.TakeDamage(move, playerUnit.Pokemon);
+        HitAnimation(playerUnit, damageDetails);
         yield return playerHud.UpdateHP();
         yield return ShowDamageDetails(damageDetails);
 
         if (damageDetails.Fainted)
         {
+            playerUnit.PlayFaintAnimation();
             yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} Fainted");
         }
         else
@@ -107,6 +116,17 @@ public class BattleSystem : MonoBehaviour
         else if (damageDetails.TypeEffectiveness < 1f)
         {
             yield return dialogBox.TypeDialog("It's not very effective...");
+        }
+    }
+
+    void HitAnimation(BattleUnit unit, DamageDetails damageDetails)
+    {
+        if (damageDetails.TypeEffectiveness > 1f)
+        {
+            unit.PlaySuperHitAnimation();
+        }
+        else {
+            unit.PlayHitAnimation();
         }
     }
 
